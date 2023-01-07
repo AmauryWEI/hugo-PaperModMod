@@ -1,0 +1,44 @@
+.about-section {
+    margin-top: 40px;
+}
+
+.about-section:not(:last-of-type) {
+    border-bottom: 2px solid var(--border);
+}
+
+.about-section-header {
+    margin-bottom: 10px;
+}
+
+.about-subsection {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 0;
+}
+
+.about-subsection-year {
+    margin: 5px 0;
+    width: 160px;
+    font-weight: 600;
+}
+
+.about-subsection-year:not(:last-of-type) {
+    border-bottom: 1px solid var(--border);
+}
+
+.about-subsection-title {
+    margin: 5px 0;
+    font-weight: 400;
+    font-weight: 600;
+}
+
+.about-subsection-title-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 2px;
+}
+
+.about-subsection-description {
+    margin-top: 5px;
+}
