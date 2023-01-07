@@ -3,35 +3,48 @@
 <header class="page-header">
     <h1>{{ .Title }}</h1>
     <div class="post-meta">
-        {{- partial "post_meta.html" . -}}
+        {{- partial "about_meta.html" . -}}
     </div>
 </header>
+
+{{- if .Content }}
+<div class="post-content">
+    {{ .Content | emojify }}
+</div>
+{{- end }}
 
 {{ if site.Params.aboutParams }}
 {{- range site.Params.aboutParams }}
 <div class="about-section">
-    <h2 class="about-section-header">{{ .SectionTitle | markdownify }}</h2>
-    <p class="about-section-description">{{ .Description | markdownify }}</p>
+    {{ $formattedSectionTitle:= strings.ToLower .SectionTitle }}
+    {{ $sectionId := strings.Replace $formattedSectionTitle " " "-"}}
+    <h2 class="about-section-header" id="{{$sectionId}}">
+        {{ .SectionTitle | markdownify }}
+        <a class="anchor" aria-hidden="true" href="#{{$sectionId}}" hidden>#</a>
+    </h2>
+    <p class="about-section-description">{{ .Description | markdownify | emojify }}</p>
     {{- range .SubSections }}
     <div class="about-subsection">
-        <h3 class="about-subsection-year">{{ .Years }}</h3>
+        <h3 class="about-subsection-year">{{ .Years | markdownify | emojify }}</h3>
         <div class="about-subsection-content">
             <h4 class="about-subsection-title">
-                <a href="{{.Link}}" class="about-subsection-title-link" target="_blank">{{ .Title | markdownify }}</a>
+                {{- if .Link }}
+                <a href="{{.Link}}" class="about-subsection-title-link" target="_blank">
+                    {{ .Title | markdownify | emojify }}</a>
+                {{- else }}
+                <span>{{ .Title | markdownify | emojify }}</span>
+                {{- end}}
             </h4>
-            <div class="about-subsection-subtitle">{{ .Subtitle | markdownify }}</div>
+            <div class="about-subsection-subtitle">{{ .Subtitle | markdownify | emojify }}</div>
             <div class="about-subsection-description">
-                {{ .Description | markdownify }}
+                {{ .Description | markdownify | emojify }}
             </div>
         </div>
     </div>
     {{- end }}
 </div>
 {{- end }}
-{{- else if .Content }}
-<div class="post-content">
-    {{ .Content }}
-</div>
 {{- end }}
+
 
 {{- end }}{{/* end main */}}
