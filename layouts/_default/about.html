@@ -25,7 +25,9 @@
     <p class="about-section-description">{{ .Description | markdownify | emojify }}</p>
     {{- range .SubSections }}
     <div class="about-subsection">
-        <h3 class="about-subsection-year">{{ .Years | markdownify | emojify }}</h3>
+        <div class="about-subsection-context">
+            <h3 class="about-subsection-year">{{ .Years | markdownify | emojify }}</h3>
+        </div>
         <div class="about-subsection-content">
             <h4 class="about-subsection-title">
                 {{- if .Link }}
