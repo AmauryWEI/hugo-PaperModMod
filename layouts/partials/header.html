@@ -39,18 +39,7 @@
 </script>
 {{- end }}
 
-<script>
-function setViewHeight() {
-    document.documentElement.style.setProperty('--vh', `${window.innerHeight/100}px`);
-};
 
-// On page loading, update the `--vh` CSS variable to match the inner Height (for mobile)
-setViewHeight()
-
-// Reset the the `--vh` CSS variable everytime the view changes
-addEventListener('resize', setViewHeight)
-addEventListener('orientationchange', setViewHeight)
-</script>
 
 <header class="header">
     <nav class="nav">
