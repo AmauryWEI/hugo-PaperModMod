@@ -1,6 +1,6 @@
 .main {
     position: relative;
-    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+    min-height: calc(100 * var(--vh) - var(--header-height) - var(--footer-height));
     max-width: calc(var(--main-width) + var(--gap) * 2);
     margin: auto;
     padding: var(--gap);
@@ -10,7 +10,7 @@
 
     /* When screen size is <= 437 px, the menu items overflow below the logo */
     .main {
-        min-height: calc(100vh - 1.5*var(--header-height) - var(--footer-height));
+        min-height: calc(100 * var(--vh) - 1.51*var(--header-height) - var(--footer-height));
     }
 }
 
@@ -18,7 +18,7 @@
 
     /* When screen size is <= 348 px, the footer text overflows on two lines */
     .main {
-        min-height: calc(100vh - 1.5*var(--header-height) - 1.4*var(--footer-height));
+        min-height: calc(100 * var(--vh) - 1.51*var(--header-height) - 1.4*var(--footer-height));
     }
 }
 
