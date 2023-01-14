@@ -12,8 +12,7 @@
     display: block;
 }
 
-.logo,
-#menu {
+.logo {
     display: flex;
     margin: auto var(--gap);
 }
@@ -27,7 +26,8 @@
     font-weight: 700;
 }
 
-.logo a img, .logo a svg {
+.logo a img,
+.logo a svg {
     display: inline;
     vertical-align: middle;
     pointer-events: none;
@@ -54,9 +54,14 @@ button#theme-toggle {
     word-break: keep-all;
     overflow-x: auto;
     white-space: nowrap;
+    margin: auto var(--gap);
 }
 
-#menu li + li {
+#menu li {
+    float: left;
+}
+
+#menu li+li {
     margin-inline-start: var(--gap);
 }
 
@@ -89,4 +94,24 @@ button#theme-toggle {
 
 .logo-switches {
     flex-wrap: inherit;
+}
+
+@media (max-width: 437px) {
+    .nav {
+        display: block;
+    }
+
+    .menu-links {
+        text-align: center;
+        line-height: calc(var(--header-height) / 2);
+    }
+
+    #menu a {
+        margin: 0px
+    }
+
+    .menu-links ul {
+        text-align: left;
+        display: inline-flex;
+    }
 }
