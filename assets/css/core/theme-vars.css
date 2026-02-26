@@ -1,8 +1,8 @@
 :root {
     --gap: 24px;
     --content-gap: 20px;
-    --nav-width: 1024px;
-    --main-width: 750px;
+    --nav-width: 1000px;
+    --main-width: 1000px;
     --header-height: 60px;
     --footer-height: 60px;
     --radius: 8px;
@@ -39,4 +39,17 @@
 
 [data-theme="dark"] .list {
     background: var(--theme);
+}
+
+/* ========================================== */
+/* NAVIGATION & SMOOTH SCROLLING              */
+/* ========================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Prevents the fixed top navigation bar from hiding your section titles when clicking a link */
+.custom-section {
+    scroll-margin-top: 1rem; 
 }

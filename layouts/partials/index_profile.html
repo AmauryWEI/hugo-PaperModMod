@@ -55,4 +55,80 @@
         {{- end }}
     </div>
     {{- end}}
+    </div> <div class="portfolio-sections">
+    
+    {{- if site.Params.profileMode.abstract }}
+    <div id="abstract" class="profile-abstract">
+        <p>{{ site.Params.profileMode.abstract | markdownify }}</p>
+    </div>
+    {{- end }}
+
+    {{- if site.Params.newsParams }}
+    <div id="news" class="custom-section news-section">
+        <h2>Updates & News</h2>
+        <ul class="custom-list">
+            {{- range site.Params.newsParams }}
+            <li>
+                <span class="item-date">{{ .date }}</span>
+                <span class="item-content">{{ .content | markdownify }}</span>
+            </li>
+            {{- end }}
+        </ul>
+    </div>
+    {{- end }}
+
+    {{- if site.Params.publicationsParams }}
+    <div id="publications" class="custom-section pubs-section">
+        <h2>Selected Publications</h2>
+        <ul class="custom-list pubs-list">
+            {{- range site.Params.publicationsParams }}
+            <li>
+                <span class="item-date">{{ .date }}</span>
+                <div class="pub-details">
+                    <strong class="pub-title">{{ .title | markdownify }}</strong>
+                    <div class="pub-meta">
+                        <span class="pub-authors">{{ .authors | markdownify }}</span>
+                        <span class="separator">&mdash;</span>
+                        <span class="pub-journal">{{ .journal | markdownify }}</span>
+                    </div>
+
+                </div>
+            </li>
+            {{- end }}
+        </ul>
+    </div>
+    {{- end }}
+
+    {{- if site.Params.workParams }}
+    <div id="experience" class="custom-section work-section">
+        <h2>Experience</h2>
+        <ul class="custom-list work-list">
+            {{- range site.Params.workParams }}
+            <li>
+                <div class="item-date stacked-date">
+                    {{- $dates := split .date " - " -}}
+                    {{- if eq (len $dates) 2 -}}
+                        <span class="date-end">{{ index $dates 1 }}</span>
+                        <span class="date-separator">&mdash;</span>
+                        <span class="date-start">{{ index $dates 0 }}</span>
+                    {{- else -}}
+                        <span>{{ .date }}</span>
+                    {{- end -}}
+                </div>
+                
+                <div class="work-details">
+                    <div class="work-meta">
+                        <strong class="work-title">{{ .title | markdownify }}</strong>
+                        <span class="separator">&mdash;</span>
+                        <span class="work-company">{{ .company | markdownify }}</span>
+                    </div>
+                    <div class="work-desc">{{ .description | markdownify }}</div>
+                </div>
+            </li>
+            {{- end }}
+        </ul>
+    </div>
+    {{- end }}
+
+</div>
 </div>
