@@ -13,40 +13,65 @@
 </div>
 {{- end }}
 
-{{ if site.Params.aboutParams }}
-{{- range site.Params.aboutParams }}
-<div class="about-section">
-    {{ $formattedSectionTitle:= strings.ToLower .SectionTitle }}
-    {{ $sectionId := strings.Replace $formattedSectionTitle " " "-"}}
-    <h2 class="about-section-header" id="{{$sectionId}}">
-        {{ .SectionTitle | markdownify }}
-        <a class="anchor" aria-hidden="true" href="#{{$sectionId}}" hidden>#</a>
-    </h2>
-    <p class="about-section-description">{{ .Description | markdownify | emojify }}</p>
-    {{- range .SubSections }}
-    <div class="about-subsection">
-        <div class="about-subsection-context">
-            <h3 class="about-subsection-year">{{ .Years | markdownify | emojify }}</h3>
-        </div>
-        <div class="about-subsection-content">
-            <h4 class="about-subsection-title">
-                {{- if .Link }}
-                <a href="{{.Link}}" class="about-subsection-title-link" target="_blank">
-                    {{ .Title | markdownify | emojify }}</a>
-                {{- else }}
-                <span>{{ .Title | markdownify | emojify }}</span>
-                {{- end}}
-            </h4>
-            <div class="about-subsection-subtitle">{{ .Subtitle | markdownify | emojify }}</div>
-            <div class="about-subsection-description">
-                {{ .Description | markdownify | emojify }}
-            </div>
-        </div>
+<div class="portfolio-sections">
+    {{ if site.Params.aboutParams }}
+    {{- range site.Params.aboutParams }}
+
+    <div class="custom-section">
+        {{ $formattedSectionTitle:= strings.ToLower .SectionTitle }}
+        {{ $sectionId := strings.Replace $formattedSectionTitle " " "-"}}
+
+        <h2 id="{{$sectionId}}">
+            {{ .SectionTitle | markdownify }}
+            <a class="anchor" aria-hidden="true" href="#{{$sectionId}}" hidden>#</a>
+        </h2>
+
+        {{- if .Description }}
+        <p class="about-section-description">{{ .Description | markdownify | emojify }}</p>
+        {{- end }}
+
+        <ul class="custom-list">
+            {{- range .SubSections }}
+            <li>
+                <div class="item-date stacked-date">
+                    {{- if in .Years " - " -}}
+                        {{- $parts := split .Years " - " -}}
+                        <span>{{ index $parts 1 | markdownify | emojify }}</span>
+                        <span class="date-separator">&mdash;</span>
+                        <span class="date-start">{{ index $parts 0 | markdownify | emojify }}</span>
+                    {{- else -}}
+                        {{ .Years | markdownify | emojify }}
+                    {{- end -}}
+                </div>
+
+                <div class="work-details">
+                    <div class="work-meta">
+                        <span class="work-title">
+                            {{- if .Link }}
+                            <a href="{{.Link}}" target="_blank">{{ .Title | markdownify | emojify }}</a>
+                            {{- else }}
+                            {{ .Title | markdownify | emojify }}
+                            {{- end}}
+                        </span>
+
+                        {{- if .Subtitle }}
+                        <span class="separator">&mdash;</span>
+                        <span class="work-company">{{ .Subtitle | markdownify | emojify }}</span>
+                        {{- end }}
+                    </div>
+
+                    {{- if .Description }}
+                    <div class="work-desc">
+                        {{ .Description | markdownify | emojify }}
+                    </div>
+                    {{- end }}
+                </div>
+            </li>
+            {{- end }}
+        </ul>
     </div>
     {{- end }}
+    {{- end }}
 </div>
-{{- end }}
-{{- end }}
-
 
 {{- end }}{{/* end main */}}

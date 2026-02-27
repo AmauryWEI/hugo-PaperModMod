@@ -159,7 +159,7 @@ html {
 }
 
 .news-section .item-content a:hover {
-    text-decoration-color: var(--primary); 
+    text-decoration-color: var(--accent); 
 }
 
 .news-section .item-content,
@@ -288,7 +288,7 @@ html {
 
 .work-desc {
     font-size: 0.95rem;
-    color: var(--secondary);
+    color: var(--primary);
     margin-top: 0.1rem; 
 }
 
@@ -306,6 +306,21 @@ html {
 .work-desc li p {
     margin: 0 !important;
     display: inline; 
+}
+
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+    display: inline-flex;
+    color: var(--tertiary);
+    margin-inline-start: 8px;
+    font-weight: 500;
+    user-select: none;
+    text-decoration: underline;
+    text-decoration-color: var(--tertiary);
 }
 
 /* ========================================== */

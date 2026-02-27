@@ -1,48 +1,15 @@
-.about-section {
-    margin-top: 40px;
+.about-section-description {
+    font-size: 1rem;
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
 }
 
-.about-section:not(:last-of-type) {
-    border-bottom: 2px solid var(--border);
+.post-content {
+    font-size: 1rem;
 }
 
-.about-section-header {
-    margin-bottom: 10px;
-}
-
-.about-subsection {
-    display: flex;
-    align-items: flex-start;
-    padding: 10px 0;
-}
-
-.about-subsection-year {
-    margin: 5px 0;
-    width: 160px;
-    font-weight: 600;
-}
-
-.about-subsection-year:not(:last-of-type) {
-    border-bottom: 1px solid var(--border);
-}
-
-.about-subsection-title {
-    margin: 5px 0;
-    font-weight: 600;
-}
-
-.about-subsection-title-link {
-    color: inherit;
-    text-decoration: underline;
-    text-decoration-color: var(--accent);
-    text-underline-offset: 2px;
-}
-
-.about-subsection-description {
-    margin-top: 5px;
-    font-size: medium;
-}
-
+/* PaperMod anchor link hover styling */
 h1:hover .anchor,
 h2:hover .anchor,
 h3:hover .anchor,
@@ -50,10 +17,10 @@ h4:hover .anchor,
 h5:hover .anchor,
 h6:hover .anchor {
     display: inline-flex;
-    color: var(--accent);
+    color: var(--tertiary);
     margin-inline-start: 8px;
     font-weight: 500;
     user-select: none;
     text-decoration: underline;
-    text-decoration-color: var(--accent);
+    text-decoration-color: var(--tertiary);
 }

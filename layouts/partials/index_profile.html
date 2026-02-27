@@ -4,30 +4,32 @@
         {{- if .imageUrl -}}
         {{- $img := "" }}
         {{- if not (urls.Parse .imageUrl).IsAbs }}
-            {{- $img = resources.Get .imageUrl }}
+        {{- $img = resources.Get .imageUrl }}
         {{- end }}
         {{- if $img }}
-            {{- $processableFormats := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
-            {{- if hugo.IsExtended -}}
-                {{- $processableFormats = $processableFormats | append "webp" -}}
-            {{- end -}}
-            {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
-            {{- if and (in $processableFormats $img.MediaType.SubType) (eq $prod true)}}
-                {{- if (not (and (not .imageHeight) (not .imageWidth))) }}
-                    {{- $img = $img.Resize (printf "%dx%d" .imageWidth .imageHeight) }}
-                {{- else if .imageHeight }}
-                    {{- $img = $img.Resize (printf "x%d" .imageHeight) }}
-                {{ else if .imageWidth }}
-                    {{- $img = $img.Resize (printf "%dx" .imageWidth) }}
-                {{ else }}
-                    {{- $img = $img.Resize "150x150" }}
-                {{- end }}
-            {{- end }}
-            <img draggable="false" src="{{ $img.Permalink }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
-                height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
+        {{- $processableFormats := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
+        {{- if hugo.IsExtended -}}
+        {{- $processableFormats = $processableFormats | append "webp" -}}
+        {{- end -}}
+        {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
+        {{- if and (in $processableFormats $img.MediaType.SubType) (eq $prod true)}}
+        {{- if (not (and (not .imageHeight) (not .imageWidth))) }}
+        {{- $img = $img.Resize (printf "%dx%d" .imageWidth .imageHeight) }}
+        {{- else if .imageHeight }}
+        {{- $img = $img.Resize (printf "x%d" .imageHeight) }}
+        {{ else if .imageWidth }}
+        {{- $img = $img.Resize (printf "%dx" .imageWidth) }}
+        {{ else }}
+        {{- $img = $img.Resize "150x150" }}
+        {{- end }}
+        {{- end }}
+        <img draggable="false" src="{{ $img.Permalink }}" alt="{{ .imageTitle | default " profile image" }}"
+            title="{{ .imageTitle }}" height="{{ .imageHeight | default 150 }}"
+            width="{{ .imageWidth | default 150 }}" />
         {{- else }}
-        <img draggable="false" src="{{ .imageUrl | absURL }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
-            height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
+        <img draggable="false" src="{{ .imageUrl | absURL }}" alt="{{ .imageTitle | default " profile image" }}"
+            title="{{ .imageTitle }}" height="{{ .imageHeight | default 150 }}"
+            width="{{ .imageWidth | default 150 }}" />
         {{- end }}
         {{- end }}
         <h1>{{ .title | default site.Title | markdownify }}</h1>
@@ -55,8 +57,9 @@
         {{- end }}
     </div>
     {{- end}}
-    </div> <div class="portfolio-sections">
-    
+</div>
+<div class="portfolio-sections">
+
     {{- if site.Params.profileMode.abstract }}
     <div id="abstract" class="profile-abstract">
         <p>{{ site.Params.profileMode.abstract | markdownify }}</p>
@@ -65,7 +68,7 @@
 
     {{- if site.Params.newsParams }}
     <div id="news" class="custom-section news-section">
-        <h2>Updates & News</h2>
+        <h2>Updates & News <a class="anchor" aria-hidden="true" href="#news" hidden>#</a></h2>
         <ul class="custom-list">
             {{- range site.Params.newsParams }}
             <li>
@@ -79,7 +82,7 @@
 
     {{- if site.Params.publicationsParams }}
     <div id="publications" class="custom-section pubs-section">
-        <h2>Selected Publications</h2>
+        <h2>Selected Publications <a class="anchor" aria-hidden="true" href="#publications" hidden>#</a></h2>
         <ul class="custom-list pubs-list">
             {{- range site.Params.publicationsParams }}
             <li>
@@ -101,21 +104,21 @@
 
     {{- if site.Params.workParams }}
     <div id="experience" class="custom-section work-section">
-        <h2>Experience</h2>
+        <h2>Experience <a class="anchor" aria-hidden="true" href="#experience" hidden>#</a></h2>
         <ul class="custom-list work-list">
             {{- range site.Params.workParams }}
             <li>
                 <div class="item-date stacked-date">
                     {{- $dates := split .date " - " -}}
                     {{- if eq (len $dates) 2 -}}
-                        <span class="date-end">{{ index $dates 1 }}</span>
-                        <span class="date-separator">&mdash;</span>
-                        <span class="date-start">{{ index $dates 0 }}</span>
+                    <span class="date-end">{{ index $dates 1 }}</span>
+                    <span class="date-separator">&mdash;</span>
+                    <span class="date-start">{{ index $dates 0 }}</span>
                     {{- else -}}
-                        <span>{{ .date }}</span>
+                    <span>{{ .date }}</span>
                     {{- end -}}
                 </div>
-                
+
                 <div class="work-details">
                     <div class="work-meta">
                         <strong class="work-title">{{ .title | markdownify }}</strong>
