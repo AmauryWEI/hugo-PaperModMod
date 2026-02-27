@@ -143,7 +143,6 @@ html {
     font-size: 1rem;
     font-weight: 400; 
     color: var(--secondary);
-    opacity: 0.8; 
 }
 
 /* ========================================== */
@@ -284,7 +283,7 @@ html {
 .work-meta .separator {
     color: var(--secondary);
     font-size: 0.9rem;
-    margin: 0 0.3rem; /* Replaces the flex column-gap */
+    margin: 0 0.0rem; /* Replaces the flex column-gap */
 }
 
 .work-desc {
