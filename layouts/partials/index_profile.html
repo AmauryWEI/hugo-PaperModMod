@@ -123,7 +123,10 @@
                     <div class="work-meta">
                         <strong class="work-title">{{ .title | markdownify }}</strong>
                         <span class="separator">&mdash;</span>
-                        <span class="work-company">{{ .company | markdownify }}</span>
+                        <span class="work-company">
+                            {{ .company | markdownify }}
+                            {{- partial "affiliation_logos.html" .logos -}}
+                        </span>
                     </div>
                     <div class="work-desc">{{ .description | markdownify }}</div>
                 </div>

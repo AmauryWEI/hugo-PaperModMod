@@ -56,7 +56,10 @@
 
                         {{- if .Subtitle }}
                         <span class="separator">&mdash;</span>
-                        <span class="work-company">{{ .Subtitle | markdownify | emojify }}</span>
+                        <span class="work-company">
+                            {{ .Subtitle | markdownify | emojify }}
+                            {{- partial "affiliation_logos.html" .Logos -}}
+                        </span>
                         {{- end }}
                     </div>
 

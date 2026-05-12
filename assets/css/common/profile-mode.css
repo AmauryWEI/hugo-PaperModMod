@@ -182,7 +182,7 @@ html {
 
 .pub-title {
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--primary);
     line-height: 1.2; 
     margin-bottom: 0.1rem; 
@@ -265,6 +265,43 @@ html {
 .work-company {
     font-size: 1rem;
     color: var(--secondary);
+}
+
+.affiliation-logos {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-left: 0.45rem;
+    vertical-align: -0.02em;
+}
+
+.affiliation-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 1em;
+    line-height: 0;
+    text-decoration: none !important;
+}
+
+.affiliation-logo img {
+    display: block;
+    width: auto;
+    height: 1em;
+    max-width: 4.75rem;
+    max-height: 1em;
+    object-fit: contain;
+    opacity: 1;
+}
+
+.affiliation-logo img[alt="EPFL logo"] {
+    height: 0.9em;
+    max-height: 0.9em;
+}
+
+.affiliation-logo img[alt="MILA logo"] {
+    height: 0.9em;
+    max-height: 0.9em;
 }
 
 .work-company a {
@@ -478,6 +515,21 @@ h6:hover .anchor {
 
     .item-date {
         font-size: 1.0rem;
+    }
+
+    .affiliation-logos {
+        gap: 0.2rem;
+        margin-left: 0.3rem;
+    }
+
+    .affiliation-logo,
+    .affiliation-logo img {
+        height: 1em;
+        max-height: 1em;
+    }
+
+    .affiliation-logo img {
+        max-width: 4rem;
     }
 }
 

@@ -1,0 +1,20 @@
+{{- with . -}}
+<span class="affiliation-logos" aria-label="Affiliation logos">
+    {{- range . }}
+    {{- $name := or .name .Name -}}
+    {{- $image := or .image .Image -}}
+    {{- $url := or .url .Url -}}
+    {{- if and $name $image -}}
+    {{- if $url -}}
+    <a class="affiliation-logo" href="{{ $url | safeURL }}" target="_blank" rel="noopener noreferrer" title="{{ $name }}">
+        <img src="{{ $image | relURL }}" alt="{{ $name }} logo" loading="lazy">
+    </a>
+    {{- else -}}
+    <span class="affiliation-logo" title="{{ $name }}">
+        <img src="{{ $image | relURL }}" alt="{{ $name }} logo" loading="lazy">
+    </span>
+    {{- end -}}
+    {{- end -}}
+    {{- end -}}
+</span>
+{{- end -}}
